@@ -14,7 +14,8 @@ namespace azure_cloud {
 
         // Use https://dpsgen.z8.web.core.windows.net/ to obtain YOUR connection string
         // This one will not work, but I guess you knew that ;)
-        const char iothub_connection_string[] = "HostName=blahdeblahdeblahdumdedumdumtoodlepipIguessyoucanseethisisnotarealconnectionstring:)=";
+        const char iothub_connection_string[] = "HostName=iotc-d730022e-8bb9-4f8c-b716-3faa76b1f69a.azure-devices.net;DeviceId=1df0s07au85;SharedAccessKey=QfcGUK7bZa/odjkXrdTqgqGgA6taFa5AdbPausGgwAE=";
+
     }
 }
 #endif

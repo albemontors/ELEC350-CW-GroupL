@@ -46,6 +46,7 @@ bool setTime()
         return false;
     }
     LogInfo("Time: %s", ctime(&timestamp));
+    printf("Time: %s", ctime(&timestamp));
     set_time(timestamp);
     return true;
 }
@@ -66,7 +67,6 @@ int main() {
     // board.test();        //Only uncomment for testing - DO NOT USE OTHERWISE
 
     // Write fake data to Azure IoT Center. Don't forget to edit azure_cloud_credentials.h
-    printf("You will need your own connection string in azure_cloud_credentials.h\n");
     LogInfo("Starting the Demo");
     azureDemo();
     LogInfo("The demo has ended");

@@ -122,8 +122,6 @@ void azureDemo() {
     LogInfo("Initializing IoT Hub client");
     IoTHub_Init();
 
-
-
     IOTHUB_DEVICE_CLIENT_HANDLE client_handle = IoTHubDeviceClient_CreateFromConnectionString(
         azure_cloud::credentials::iothub_connection_string,
         MQTT_Protocol
@@ -178,7 +176,7 @@ void azureDemo() {
     // Send ten message to the cloud (one per second)
     // or until we receive a message from the cloud
     IOTHUB_MESSAGE_HANDLE message_handle;
-    char message[80];
+    char message[100];
     for (int i = 0; i < 10; ++i) {
         if (message_received) {
             // If we have received a message from the cloud, don't send more messeges
@@ -187,15 +185,23 @@ void azureDemo() {
         //Send data in this format:
         /*
             {
-                "LightLevel" : 0.12,
+                "LightIntensity" : 0.12,
                 "Temperature" : 36.0
             }
 
         */
         double light = (float) i;
         double temp  = (float)36.0f-0.1*(float)i;
-        sprintf(message, "{ \"LightLevel\" : %5.2f, \"Temperature\" : %5.2f }", light, temp);
-        LogInfo("Sending: \"%s\"", message);
+        printf("SAS");
+        sprintf(message, "{ ""LightIntensity"" : %5.2f, ""Temperature"" : %5.2f }", light, temp);
+        printf("SAS\n\r");
+        /*debug*/ 
+        for(int j=0; j<100; j++){
+            printf("%c", message[j]);
+        }
+
+        //LogInfo("Sending: \"%s\"", message);
+        printf("Sending: \"%s\"", message);
 
         message_handle = IoTHubMessage_CreateFromString(message);
         if (message_handle == nullptr) {
