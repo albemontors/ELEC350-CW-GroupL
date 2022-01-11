@@ -11,3 +11,4 @@ ntp-client
 drivers/COMPONENT_wifi_ism43362
 mbed-client-for-azure
 MSB-V2-V4-TEST/mbed-os
+azure_cloud_credentials.h
