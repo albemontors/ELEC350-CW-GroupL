@@ -42,8 +42,8 @@ Queue<RawData*, 8> rawDataQueue;
 MemoryPool<RawData, 8> rawData;        //vector of raw data to be processed (could be size sized 1)
 Queue<RawData*, 16> sdDataQueue;
 MemoryPool<RawData, 16> sdData;  //vector of formatted data for sd (bigger = less frequent writes)
-Queue<RawData*, 8> iotDataQueue;
-MemoryPool<RawData, 8> iotData;  //vector of formatted data for cloud (could be sized 1)
+Queue<RawData, 8> iotDataQueue;
+//MemoryPool<RawData, 8> iotData;  //vector of formatted data for cloud (could be sized 1)
 
 Ticker readNow;     //defines when to start reading
 Thread readData;    //reads the data off the sensors
@@ -61,9 +61,11 @@ void interruptRoutine();
 void readDataF();
 void dataHandleF();
 void iotWriteF();
+void clone(RawData* datain, RawData* dataout);
 static void on_connection_status(IOTHUB_CLIENT_CONNECTION_STATUS result, IOTHUB_CLIENT_CONNECTION_STATUS_REASON reason, void* user_context);
 static IOTHUBMESSAGE_DISPOSITION_RESULT on_message_received(IOTHUB_MESSAGE_HANDLE message, void* user_context);
 static void on_message_sent(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback);
 static int on_method_callback(const char* method_name, const unsigned char* payload, size_t size, unsigned char** response, size_t* response_size, void* userContextCallback);
+static void on_message_sent(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback);
 
 #endif
