@@ -134,7 +134,7 @@ void iotWriteF() {
 
         locker.lock();
         LogInfo("3rd temp: %f", data->temperature);
-        sprintf(message, "{ ""LightIntensity"" : %5.2f, ""Temperature"" : %5.2f }", data->humidity, data->temperature);
+        sprintf(message, "{ ""LightIntensity"" : %5.2f, ""Temperature"" : %5.2f }", data->lightLevel, data->temperature);
         LogInfo("Sending: %s", message);
         message_handle = IoTHubMessage_CreateFromString(message);
         if (message_handle == nullptr) {
